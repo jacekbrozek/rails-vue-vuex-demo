@@ -15,7 +15,10 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    tasks: state => state.tasks,
+    tasks:        state => state.tasks,
+    pendingTasks: state => state.tasks.filter(task => task.status === 'pending'),
+    currentTasks: state => state.tasks.filter(task => task.status === 'in_progress'),
+    doneTasks:    state => state.tasks.filter(task => task.status === 'done'),
   },
   actions: {
     async [FETCH_TASKS]({ commit }) {
