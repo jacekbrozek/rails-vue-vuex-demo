@@ -3,5 +3,6 @@ class TaskSerializer
   set_type :tasks
 
   attributes :name,
-             :status
+             :status,
+             :created_at
 end
