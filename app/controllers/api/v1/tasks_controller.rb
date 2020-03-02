@@ -10,6 +10,14 @@ module Api
         )
       end
 
+      def update
+        task = Task.find(task_params[:id])
+        task.update(task_params)
+        render(
+          json: TaskSerializer.new(task).serialized_json
+        )
+      end
+
       private
 
       def filtering_options
@@ -17,6 +25,12 @@ module Api
         {
           status: params[:filter][:status]
         }
+      end
+
+      def task_params
+        params.require(:data).permit(:id, {
+          attributes: [:status]
+        })
       end
     end
   end
