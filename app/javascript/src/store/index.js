@@ -2,7 +2,7 @@ import Vue from "vue"
 import Vuex from "vuex"
 import { FETCH_TASKS } from './actions.type'
 import { SET_TASKS } from './mutations.type'
-import { Task } from '../models/post'
+import { Task } from '../models/task'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
