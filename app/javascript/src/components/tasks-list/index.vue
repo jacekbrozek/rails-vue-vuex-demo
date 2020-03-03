@@ -1,9 +1,16 @@
 <template>
-  <section>
+  <section class='tasks-list'>
     <h3>{{ title }}</h3>
-    <Container @drop='onTaskDrop' group-name='column' :get-child-payload='getChildPayload'>
+    <Container
+      @drop='onTaskDrop'
+      group-name='column'
+      :get-child-payload='getChildPayload'
+      :drop-placeholder='dropPlaceholderOptions'
+    >
       <Draggable v-for='task in tasks' :key='task.id'>
-        {{ task.name }}
+        <div class='task'>
+          {{ task.name }}
+        </div>
       </Draggable>
     </Container>
   </section>
@@ -17,6 +24,15 @@
     components: {
       Container,
       Draggable
+    },
+    data: () => {
+      return {
+        dropPlaceholderOptions: {
+          className: 'drop-preview',
+          animationDuration: '150',
+          showOnTop: true
+        }
+      }
     },
     methods: {
       onTaskDrop(dropResult) {

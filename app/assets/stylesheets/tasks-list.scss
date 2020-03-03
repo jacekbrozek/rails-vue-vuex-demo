@@ -1,0 +1,24 @@
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 20%;
+  margin: 20px;
+  flex-shrink: 1;
+  min-height: 500px;
+  .task {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 2px 0;
+    border-radius: 10px;
+    &:hover {
+      cursor: grab;
+    }
+    &:active {
+      cursor: grabbing;
+    }
+  }
+  .drop-preview {
+    background: rgba(0, 0, 0, 0.4);
+  }
+}
