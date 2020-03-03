@@ -1,6 +1,7 @@
 import Vue from "vue"
 import Vuex from "vuex"
 import { FETCH_TASKS } from './actions.type'
+import { UPDATE_TASK } from './actions.type'
 import { SET_TASKS } from './mutations.type'
 import { Task } from '../models/task'
 
@@ -26,6 +27,10 @@ export default new Vuex.Store({
       Task.all()
         .then(response => response.data)
         .then(tasks => commit(SET_TASKS, tasks))
+    },
+    async [UPDATE_TASK](state, { task, status}) {
+      task.status = status
+      task.save()
     }
   }
 })

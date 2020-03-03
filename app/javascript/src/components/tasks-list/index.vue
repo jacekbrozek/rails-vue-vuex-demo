@@ -18,7 +18,7 @@
 
 <script>
   import { Container, Draggable } from 'vue-smooth-dnd'
-
+  import { UPDATE_TASK } from '../../store/actions.type'
   export default {
     props: ['title', 'tasks'],
     components: {
@@ -40,10 +40,10 @@
 
         if (removedIndex !== null || addedIndex !== null) {
           const { status } = this.$attrs
-          const task = payload
-
-          task.status = status
-          task.save()
+          this.$store.dispatch(UPDATE_TASK, {
+            task: payload,
+            status: status,
+          })
         }
       },
       getChildPayload(index) {
